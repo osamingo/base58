@@ -4,6 +4,9 @@ linters-settings:
     check-blank: true
   misspell:
     locale: US
+  varnamelen:
+    ignore-names:
+      - id
 
 linters:
   enable-all: true
@@ -16,3 +19,6 @@ issues:
       text: "G404:"
       linters:
         - gosec
+    - path: _test\.go
+      linters:
+        - varnamelen

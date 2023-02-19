@@ -78,7 +78,7 @@ func (enc *Encoder) Decode(id string) (uint64, error) {
 	if id == "" {
 		return 0, ErrInvalidArgument
 	}
-	n := uint64(0)
+	num := uint64(0)
 
 	for _, v := range id {
 		u := enc.decodeMap[v]
@@ -86,8 +86,8 @@ func (enc *Encoder) Decode(id string) (uint64, error) {
 			return 0, ErrUnknownCharacter
 		}
 
-		n = n*CharacterLength + uint64(u)
+		num = num*CharacterLength + uint64(u)
 	}
 
-	return n, nil
+	return num, nil
 }
