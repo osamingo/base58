@@ -122,8 +122,8 @@ func BenchmarkEncoder_Encode(b *testing.B) {
 
 	b.ReportAllocs()
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		enc.Encode(uint64(s.Int63()))
+	for range b.N {
+		enc.Encode(s.Uint64())
 	}
 }
 
@@ -148,7 +148,7 @@ func BenchmarkEncoder_Decode(b *testing.B) {
 
 	b.ReportAllocs()
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		_, err := enc.Decode(vs[s.Intn(l)])
 		if err != nil {
 			b.Fatal(err)
