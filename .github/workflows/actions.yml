@@ -13,10 +13,10 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: golangci/golangci-lint-action@v3
+      - uses: actions/checkout@v4
+      - uses: golangci/golangci-lint-action@v6
         with:
-          version: v1.52.2
+          version: v1.64.8
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -24,9 +24,9 @@ jobs:
       matrix:
         go: [ 'stable', 'oldstable' ]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
       - run: go test -race -covermode=atomic -coverprofile=coverage.txt ./...
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v5
